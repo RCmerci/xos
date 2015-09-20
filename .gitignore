@@ -1,0 +1,7 @@
+*.img
+*.bin
+GTAGS
+GRTAGS
+GPATH
+*~
+*.o
