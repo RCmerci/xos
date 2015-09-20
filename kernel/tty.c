@@ -334,6 +334,8 @@ static int do_write(MESSAGE * m)
   while(1) {
     *last_write_p = buf[curr_rst];
     last_write_p ++ ;
+    if (last_write_p == tty_p->tty_out_cache + TTY_CHAR_CACHE_SIZE)
+      last_write_p = tty_p->tty_out_cache;
     curr_rst ++ ;
     tty_p->out_head_p ++ ;
     if (tty_p->out_head_p == tty_p->tty_out_cache + TTY_CHAR_CACHE_SIZE)
