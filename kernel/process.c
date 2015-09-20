@@ -190,7 +190,7 @@ void testB()
       i++;
     }
     if (!strcmp(buf, "hello")) {
-      char * ss = "oh fuck!!\n";
+      char * ss = "world\n";
       write(f, ss, strlen(ss));
     }
     else {
@@ -240,10 +240,11 @@ void init_proc()
     printf("sub proc exit:%d\n", p);
 
     while(1){
-      printf("INIT_F");
+      printf("INIT process");
       delay(5);
     }
   } else {			/* child */
+    printf("fs test:\n");
     int f2 = create("test_kid");
     assert(f2!=-1);
     write(f2, "666kid", 6);
@@ -256,6 +257,7 @@ void init_proc()
     assert(-1 != close(f2));
     assert(-1 != unlink("test_kid"));
     assert(-1 == open("test_kid", FILE_RD|FILE_WR));
+    printf("init kid process exit\n");
     exit();
     while (1) {
       
